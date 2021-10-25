@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.lang.*;
 
-
+//对输入的代码管理
 class getKey extends Thread{
     private Socket skt;
     public getKey(Socket skt) {this.skt=skt;}
