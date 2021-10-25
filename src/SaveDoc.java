@@ -38,7 +38,7 @@ class ReadFile{
     }
 }
 
-
+//储存信息至聊天记录
 class SaveMessageToFile{
     public SaveMessageToFile(int mode,String message) throws Exception {
         //linux系统
@@ -67,7 +67,7 @@ class SaveMessageToFile{
     }
 }
 
-
+//根据日期进行聊天记录查找
 class SearchRecordDate extends Thread{
     private String date;
     public SearchRecordDate(String date){
@@ -99,7 +99,7 @@ class SearchRecordDate extends Thread{
 
 }
 
-
+//根据内容进行聊天记录查找
 class SearchRecordCont extends Thread{
     private String content;
     public SearchRecordCont(String content){

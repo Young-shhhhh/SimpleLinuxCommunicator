@@ -3,6 +3,7 @@ import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+//向指定端口发送文件
 class SendFile {
     final String fileUrl;
     final String Url;
@@ -56,6 +57,8 @@ class SendFile {
 }
 }
 
+
+//开启端口接受文件
 class ReceiveFile implements Runnable{
 
     @Override

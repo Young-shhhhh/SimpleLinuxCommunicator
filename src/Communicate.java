@@ -81,7 +81,6 @@ class NetTcp extends Thread{
             for (;;) {
                 System.out.println("对方信息：" + br.readLine());
                 new SaveMessageToFile(1,br.readLine());
-
             }
         } catch (Exception e) {
             System.out.println("对方下线或者掉线……");
