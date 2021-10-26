@@ -28,8 +28,7 @@ class getKey extends Thread{
                 else if(command[0].equals("SF")){//发送文件
                     String S=skt.getInetAddress().toString();
                     S=S.substring(1);
-                    System.out.println(S);
-                    new SendFile(S,command[1]);
+                    new SendFile(S,Integer.parseInt(command[1]),command[2]);
                 }
                 else if(command[0].equals("?")||command[0].equals("？")) {
                     new Launcher().help();

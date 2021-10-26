@@ -13,9 +13,10 @@ class ReadFile{
             //linux系统
             //String path = "/Users/shaonaiyi/datas/tmp/hello.txt";
             //win系统
-            String path = "E:\\桌面\\聊天记录.txt";
+            String path = "Coummunicator_Data/Record/record.txt";
             File file = new File(path);
             if(!file.exists()){
+                file.getParentFile().mkdirs();
                 file.createNewFile();
             }
             FileInputStream fileInputStream = null;
@@ -43,7 +44,7 @@ class SaveMessageToFile{
         //linux系统
         //String path="/Users/shaonaiyi/datas/tmp/hello.txt";
         //win系统
-        String path="E:\\桌面\\聊天记录.txt";
+        String path="Coummunicator_Data/Record/record.txt";
         Date date= new Date();
         SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         File file = new File(path);
@@ -77,7 +78,7 @@ class SearchRecordDate extends Thread{
         //linux系统
         //String path = "/Users/shaonaiyi/datas/tmp/hello.txt";
         //win系统
-        String path = "E:\\桌面\\聊天记录.txt";
+        String path = "Coummunicator_Data/Record/record.txt";
         FileInputStream fileInputStream = null;
         fileInputStream = new FileInputStream(path);
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
@@ -109,7 +110,7 @@ class SearchRecordCont extends Thread{
             //linux系统
             //String path = "/Users/shaonaiyi/datas/tmp/hello.txt";
             //win系统
-            String path = "E:\\桌面\\聊天记录.txt";
+            String path = "Coummunicator_Data/Record/record.txt";
             FileInputStream fileInputStream = null;
             fileInputStream = new FileInputStream(path);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));

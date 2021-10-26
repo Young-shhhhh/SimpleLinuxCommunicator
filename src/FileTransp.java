@@ -7,9 +7,11 @@ import java.net.Socket;
 class SendFile {
     final String fileUrl;
     final String Url;
-    public SendFile(String Url,String fileUrl){
+    final int port;
+    public SendFile(String Url,int port,String fileUrl){
         this.fileUrl = fileUrl ;
         this.Url = Url ;
+        this.port = port;
         int length=0;
         byte[] sendByte = null;
         Socket socket = null;
@@ -17,7 +19,7 @@ class SendFile {
         FileInputStream fileIn =null;
         try{
             socket = new Socket();
-            socket.connect(new InetSocketAddress(Url,8082),10*1000);
+            socket.connect(new InetSocketAddress(Url,port),10*1000);
             dataOut =new DataOutputStream(socket.getOutputStream());
             File file = new File(fileUrl);
             fileIn = new FileInputStream(file);
@@ -68,7 +70,7 @@ class ReceiveFile implements Runnable{
 
     public ReceiveFile(){
         try{
-            final ServerSocket server = new ServerSocket(8081);
+            final ServerSocket server = new ServerSocket(Main.revPort);
             Thread th =new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -80,6 +82,7 @@ class ReceiveFile implements Runnable{
                             receiveFile(socket);
                         }catch (Exception e) {
                             e.printStackTrace();
+                            System.out.println("接收端口不可用或已被占用！请去conf.ini中修改接收端口");
                         }
                     }
                 }
@@ -99,7 +102,7 @@ class ReceiveFile implements Runnable{
         try {
             din = new DataInputStream(socket.getInputStream());
 
-            fout = new FileOutputStream(new File("E:\\"+din.readUTF()));
+            fout = new FileOutputStream(new File("Coummunicator_Data/"+din.readUTF()));
             inputByte = new byte[1024];
             System.out.println("开始接收数据...");
             while (true) {
