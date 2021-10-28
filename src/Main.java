@@ -38,6 +38,12 @@ public class Main {
                 if(!file.exists()){
                     file.getParentFile().mkdirs();
                     file.createNewFile();
+                    FileWriter fileWriter = new FileWriter(file.getAbsoluteFile(),true);
+                    StringBuffer stringBuffer=new StringBuffer();
+                    BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+                    stringBuffer.append("接收端口:8081");
+                    bufferedWriter.write(stringBuffer.toString());
+                    bufferedWriter.close();
                 }
                 FileInputStream fileInputStream = null;
                 fileInputStream = new FileInputStream(path);
