@@ -15,7 +15,6 @@ class getKey extends Thread{
                 String[] command = br.readLine().split(" ");
                 if (command[0].equals("1")) {//发送信息
                     new KeyTcp(skt, command[1]).start();
-                    new KeyTcp(skt, command[1]).start();
                     new SaveMessageToFile(0,command[1]);
                 }
                 else if (command[0].equals("FR")){
@@ -55,7 +54,7 @@ class KeyTcp extends Thread{
         try {
             //构建输出流，将从键盘接收的信息写入到网络
             PrintWriter pw=new PrintWriter(skt.getOutputStream());
-                    pw.println(message);
+                    pw.println(message+"\n");
                     pw.flush();
         } catch (Exception e) {
             e.printStackTrace();
